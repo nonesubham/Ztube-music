@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iconify Converter</title>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .custom-form {
+        max-width: 400px;
+        width: 100%;
+    }
+</style>
+
+<body>
+
+    <div class="container custom-form">
+        <h2 class="text-center">Iconify Converter</h2>
+
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="username" placeholder="material-symbols:explore">
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block"
+                onclick="generate_code('username')">Generate</button>
+                <button class="btn btn-info" id="fckit" type="button" data-clipboard-action="cut" data-clipboard-target="#username">copy</button>
+                
+
+    </div>
+    <script>
+        new ClipboardJS('#fckit');
+        function replaceAndPrefix(input) {
+            const replacedString = input.replace(/:/g, '-');
+  
+  // Prefix with "i-"
+  const prefixedString = 'i-' + replacedString;
+  
+  // Return the result
+  return `<${prefixedString} />`;
+        }
+        function generate_code(btn) {
+            data= document.getElementById(btn).value
+            document.getElementById(btn).value= replaceAndPrefix(data)
+        }
+
+    </script>
+</body>
+
+</html>
