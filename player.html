@@ -1,0 +1,106 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Audio Player</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #audio-player {
+      width: 300px;
+      text-align: center;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="audio-player">
+    <audio id="audio" src="sample.mp3"></audio>
+    <button onclick="togglePlayPause()">Play/Pause</button>
+    <button onclick="prevTrack()">Previous</button>
+    <button onclick="nextTrack()">Next</button>
+    <input type="range" id="seekbar" value="0" step="1" onchange="updateSeekbar()">
+    <br>
+    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+    <br>
+    <label for="loopCheckbox">Loop</label>
+    <input type="checkbox" id="loopCheckbox" onchange="toggleLoop()">
+  </div>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const playPauseButton = document.querySelector('button');
+    const seekbar = document.getElementById('seekbar');
+    const currentTimeSpan = document.getElementById('currentTime');
+    const durationSpan = document.getElementById('duration');
+    const loopCheckbox = document.getElementById('loopCheckbox');
+
+    let isPlaying = false;
+
+    function togglePlayPause() {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      isPlaying = !isPlaying;
+      updatePlayPauseButton();
+    }
+
+    function updatePlayPauseButton() {
+      playPauseButton.textContent = isPlaying ? 'Pause' : 'Play';
+    }
+
+    function nextTrack() {
+      // Implement your logic to switch to the next track
+    }
+
+    function prevTrack() {
+      // Implement your logic to switch to the previous track
+    }
+
+    function updateSeekbar() {
+      audio.currentTime = seekbar.value;
+    }
+
+    function updateSeekbarAndTime() {
+      seekbar.value = audio.currentTime;
+      currentTimeSpan.textContent = formatTime(audio.currentTime);
+    }
+
+    function toggleLoop() {
+      audio.loop = loopCheckbox.checked;
+    }
+
+    function formatTime(time) {
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time % 60);
+      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    }
+
+    audio.addEventListener('timeupdate', () => {
+      updateSeekbarAndTime();
+    });
+
+    audio.addEventListener('durationchange', () => {
+      seekbar.max = audio.duration;
+      durationSpan.textContent = formatTime(audio.duration);
+    });
+  </script>
+
+</body>
+</html> -->

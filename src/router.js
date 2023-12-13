@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import home from './components/HelloWorld.vue';
-import sidebar from './components/sidebar.vue';
-import player from './components/sideplayer.vue';
+import player from './components/player.vue';
+import right_sidebar from './components/right_sidebar.vue';
 
 
 const routes=[
@@ -12,7 +12,7 @@ const routes=[
     },{
         name:'About',
         path:'/about',
-        component:sidebar
+        component:right_sidebar
     }
     ,{
         name:'Player',

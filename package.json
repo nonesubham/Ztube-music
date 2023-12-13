@@ -10,6 +10,7 @@
   "dependencies": {
     "@iconify/json": "^2.2.154",
     "@iconify/vue": "^4.1.1",
+    "howler": "^2.2.4",
     "i": "^0.3.7",
     "unplugin-icons": "^0.18.1",
     "unplugin-vue-components": "^0.26.0",

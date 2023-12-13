@@ -1,7 +1,7 @@
 <script setup>
 // #22C1C3 theme color
 // #455a5a secondary color of font
-import sideplayer from './components/sideplayer.vue'
+import right_sidebar from './components/right_sidebar.vue'
 </script>
 
 <template>
@@ -58,7 +58,7 @@ import sideplayer from './components/sideplayer.vue'
     <router-view></router-view>
     </div>
     <div class="item-3">
-    <sideplayer/>
+    <right_sidebar/>
     </div>
   </div>
 </template>
