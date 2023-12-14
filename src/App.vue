@@ -20,7 +20,7 @@ import right_sidebar from './components/right_sidebar.vue'
             <span class="m-header">Menu</span>
 
       <router-link to="/" class="menu-link" active-class="active-menu"><li><i-heroicons-home-solid />&nbsp;&nbsp;&nbsp;Home</li></router-link>
-      <router-link to="/player" class="menu-link" active-class="active-menu"><li><i-material-symbols-explore />&nbsp;&nbsp;&nbsp;Explore</li></router-link>
+      <router-link to="/about" class="menu-link" active-class="active-menu"><li><i-material-symbols-explore />&nbsp;&nbsp;&nbsp;Explore</li></router-link>
       <router-link to="/about" class="menu-link" active-class="active-menu"><li><i-solar-playlist-bold />&nbsp;&nbsp;&nbsp;Playlists</li></router-link>
       <router-link to="/" class="menu-link" active-class="active-menu"><li><i-iconamoon-music-artist-fill />&nbsp;&nbsp;&nbsp;Artists</li></router-link>
           </ul>
@@ -55,6 +55,7 @@ import right_sidebar from './components/right_sidebar.vue'
     </div>
 
     <div class="item-2">
+   
     <router-view></router-view>
     </div>
     <div class="item-3">
