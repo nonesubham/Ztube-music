@@ -24,33 +24,47 @@
     <!-- Audio Player Start From Here -->
     <div id="mainPlayer">
       <img :src="mus_thmb" :alt="mus_title" id="mus_thmb" />
-      <div id="mainCtrl">
 
-      <!-- mute -->
-        <div class="ctrlBtn muteBtn">
-          <i-solar-repeat-one-minimalistic-bold v-if="isLooping" class="cBtn"/>
-          <i-solar-repeat-bold v-else class="cBtn"/>
-          <!-- <i-solar-repeat-one-outline /> -->
+      <div id="wrapCtrl">
+        <div class="SeekBar" @mouseover="viewseek(true)" @mouseleave="viewseek(false)" v-html="showHSeek">
+          
+          
+        
         </div>
-        <!-- previous -->
-        <div class="ctrlBtn" id="preBtn">
-          <i-line-md-arrow-close-left class="cBtn"/>
+        <div id="time-param">
+          <div class="c-Time" style="padding-right: 155px">
+            <span class="time">00:02</span>
+          </div>
+          <div class="t-Time" style="text-align: end">
+            <span class="time"> 03:23 </span>
+          </div>
+        </div>
+        <div id="mainCtrl">
+          <!-- mute -->
+          <div class="ctrlBtn loopBtn">
+            <i-solar-repeat-one-minimalistic-bold v-if="isLooping" class="cBtn" />
+            <i-solar-repeat-bold v-else class="cBtn" />
+            <!-- <i-solar-repeat-one-outline /> -->
+          </div>
+          <!-- previous -->
+          <div class="ctrlBtn" id="preBtn">
+            <i-line-md-arrow-close-left class="cBtn" />
           </div>
           <!-- play/pause -->
           <div id="playbtn" class="ctrlBtn">
-          <i-line-md-play-filled-to-pause-transition v-if="isPlaying" class="cBtn"/>
-        
-          <i-line-md-play-filled v-else class="cBtn"/>
-          
-        </div>
-        <!-- next -->
-        <div class="ctrlBtn" id="nxtBtn">
-          <i-line-md-arrow-close-right class="cBtn"/>
-        </div>
-        <!-- loop -->
-        <div class="ctrlBtn loopBtn">
-          <i-solar-volume-cross-bold v-if="isMuted" class="cBtn"/>
-          <i-solar-volume-loud-bold-duotone v-else class="cBtn"/>
+            <i-line-md-play-filled-to-pause-transition v-if="isPlaying" class="cBtn" />
+
+            <i-line-md-play-filled v-else class="cBtn" />
+          </div>
+          <!-- next -->
+          <div class="ctrlBtn" id="nxtBtn">
+            <i-line-md-arrow-close-right class="cBtn" />
+          </div>
+          <!-- loop -->
+          <div class="ctrlBtn muteBtn">
+            <i-solar-volume-cross-bold v-if="isMuted" class="cBtn" />
+            <i-solar-volume-loud-bold-duotone v-else class="cBtn" />
+          </div>
         </div>
       </div>
     </div>
@@ -63,16 +77,21 @@ const audioPlayer = ref(null);
 const isPlaying = ref(false);
 const isLooping = ref(false);
 const seekbarValue = ref(0);
-const currentTime = ref("0:00");
+const currentTime = ref("50");
 const isMuted = ref(false); // Track mute state
 const volume = ref(1);
 
 // api config
 const mus_title = ref("temp");
 const mus_thmb = ref("https://img.youtube.com/vi/V_jp5_VAzXk/maxresdefault.jpg");
-
+const prog_bar=`<progress v-else id="d-seek" value="${currentTime.value}" max="100" class="main-Seek" />`;
+const h_seekbar=`<input type="range" min="1" max="100" value="${currentTime.value}" id="h-seek" class="main-Seek" />`;
+let showHSeek = ref(prog_bar);
 const audioSource = "src/assets/sample2.mp3";
 
+const viewseek= (resp)=>{
+showHSeek.value = resp ? h_seekbar : prog_bar;
+}
 const setVolume = () => {
   if (audioPlayer.value) {
     audioPlayer.value.volume = volume.value;
@@ -199,37 +218,69 @@ onUnmounted(() => {
   border-width: 2px;
 }
 
-#mainCtrl {
+#wrapCtrl {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   position: absolute;
   left: 50%;
   bottom: 20px;
   transform: translateX(-50%);
   z-index: 100;
-  padding: 20px;
   border-radius: 30px;
   background-color: #3d3d3d88;
   backdrop-filter: blur(5px);
-  border-width: 5px !important;
+  border: 0.5px solid #ffffff2c !important;
   text-align: center;
   width: 46%;
 }
+#mainCtrl {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
 
-
-.cBtn:hover{
-color: #afafaf;
+.cBtn:hover {
+  transition: 0.3s;
+  transform: scale(0.95);
+  color: #afafaf;
+}
+.cBtn:active {
+  transition: 0.5s;
+  transform: scale(1.2);
+  color: #fff;
 }
 .ctrlBtn {
   font-size: 20px;
   color: white;
+  margin-bottom: -7px;
 }
-.loopBtn{
-  padding-left: 20px;
+.loopBtn {
+  padding-right: 40px;
 }
-.muteBtn{
-  padding-right: 20px;
+.muteBtn {
+  padding-left: 40px;
 }
-
+#playbtn {
+  padding: 0px 10px;
+}
+#time-param {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.SeekBar {
+  width: 100%;
+}
+.main-Seek {
+  width: 80%;
+}
+.time {
+  font-size: 12px;
+  color: white;
+}
 </style>
