@@ -26,7 +26,7 @@ Start the server
 ```
 
 ## Screenshots
-![Alt text](https://raw.githubusercontent.com/nonesubham/Ztube-music/main/Capture.png)
+![Alt text](https://raw.githubusercontent.com/nonesubham/Ztube-music/main/Capture.PNG)
 
 ## Credit
 ### For Player
