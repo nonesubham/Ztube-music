@@ -22,49 +22,44 @@
       </div>
     </div>
     <!-- Audio Player Start From Here -->
-    <div id="mainPlayer">
-      <img :src="mus_thmb" :alt="mus_title" id="mus_thmb" />
-
-      <div id="wrapCtrl">
-        <div class="SeekBar" @mouseover="viewseek(true)" @mouseleave="viewseek(false)" v-html="showHSeek">
-          
-          
-        
+    <div class="player">
+      <div class="player__list">
+        <div class="player__icon player__icon-list icon-list"></div>
+      </div>
+      <div class="player__volume">
+        <div class="player__icon player__icon-volume icon-volume"></div>
+      </div>
+      <div class="player__meta">
+        <div class="player__song">Queenie Eye</div>
+        <div class="player__artist">Paul McCartney — New</div>
+      </div>
+      <div
+        class="player__bg"
+        style="
+          background-image: url(https://img.youtube.com/vi/V_jp5_VAzXk/maxresdefault.jpg);
+        "
+      ></div>
+      <div class="player__controls">
+        <div
+          class="player__controls-bg"
+          style="
+            background-image: url(https://img.youtube.com/vi/V_jp5_VAzXk/maxresdefault.jpg);
+          "
+        ></div>
+        <div class="player__repeat">
+          <div class="player__icon player__icon-repeat icon-repeat"></div>
         </div>
-        <div id="time-param">
-          <div class="c-Time" style="padding-right: 155px">
-            <span class="time">00:02</span>
-          </div>
-          <div class="t-Time" style="text-align: end">
-            <span class="time"> 03:23 </span>
-          </div>
+        <div class="player__prev">
+          <div class="player__icon player__icon-prev icon-prev"><i-line-md-play-filled /></div>
         </div>
-        <div id="mainCtrl">
-          <!-- mute -->
-          <div class="ctrlBtn loopBtn">
-            <i-solar-repeat-one-minimalistic-bold v-if="isLooping" class="cBtn" />
-            <i-solar-repeat-bold v-else class="cBtn" />
-            <!-- <i-solar-repeat-one-outline /> -->
-          </div>
-          <!-- previous -->
-          <div class="ctrlBtn" id="preBtn">
-            <i-line-md-arrow-close-left class="cBtn" />
-          </div>
-          <!-- play/pause -->
-          <div id="playbtn" class="ctrlBtn">
-            <i-line-md-play-filled-to-pause-transition v-if="isPlaying" class="cBtn" />
-
-            <i-line-md-play-filled v-else class="cBtn" />
-          </div>
-          <!-- next -->
-          <div class="ctrlBtn" id="nxtBtn">
-            <i-line-md-arrow-close-right class="cBtn" />
-          </div>
-          <!-- loop -->
-          <div class="ctrlBtn muteBtn">
-            <i-solar-volume-cross-bold v-if="isMuted" class="cBtn" />
-            <i-solar-volume-loud-bold-duotone v-else class="cBtn" />
-          </div>
+        <div class="player__play">
+          <div class="player__icon player__icon-play icon-play"><i-line-md-play-filled /></div>
+        </div>
+        <div class="player__next">
+          <div class="player__icon player__icon-next icon-next"></div>
+        </div>
+        <div class="player__shuffle">
+          <div class="player__icon player__icon-shuffle icon-shuffle"></div>
         </div>
       </div>
     </div>
@@ -76,22 +71,19 @@ import { ref, onMounted, onUnmounted } from "vue";
 const audioPlayer = ref(null);
 const isPlaying = ref(false);
 const isLooping = ref(false);
-const seekbarValue = ref(0);
+const totalMusicDuration = ref(100);
 const currentTime = ref("50");
 const isMuted = ref(false); // Track mute state
 const volume = ref(1);
-
+const seek_bar = ref(false);
 // api config
 const mus_title = ref("temp");
 const mus_thmb = ref("https://img.youtube.com/vi/V_jp5_VAzXk/maxresdefault.jpg");
-const prog_bar=`<progress v-else id="d-seek" value="${currentTime.value}" max="100" class="main-Seek" />`;
-const h_seekbar=`<input type="range" min="1" max="100" value="${currentTime.value}" id="h-seek" class="main-Seek" />`;
-let showHSeek = ref(prog_bar);
 const audioSource = "src/assets/sample2.mp3";
 
-const viewseek= (resp)=>{
-showHSeek.value = resp ? h_seekbar : prog_bar;
-}
+const viewseek = (resp) => {
+  seek_bar.value = true;
+};
 const setVolume = () => {
   if (audioPlayer.value) {
     audioPlayer.value.volume = volume.value;
@@ -208,79 +200,228 @@ onUnmounted(() => {
   color: white;
   font-weight: bold;
 }
-#mus_thmb {
-  height: 350px;
-  margin-top: 50px;
-}
-
-#mainPlayer {
-  position: relative;
-  border-width: 2px;
-}
-
-#wrapCtrl {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
-  z-index: 100;
+.player {
+  box-shadow: 0 2px 4px -4px rgba(0, 0, 0, 0.4), 0 50px 45px -20px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
-  background-color: #3d3d3d88;
-  backdrop-filter: blur(5px);
-  border: 0.5px solid #ffffff2c !important;
-  text-align: center;
-  width: 46%;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-top: 30px;
 }
-#mainCtrl {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  text-align: center;
-}
-
-.cBtn:hover {
-  transition: 0.3s;
-  transform: scale(0.95);
-  color: #afafaf;
-}
-.cBtn:active {
-  transition: 0.5s;
-  transform: scale(1.2);
-  color: #fff;
-}
-.ctrlBtn {
+.player__meta {
+  box-sizing: border-box;
   font-size: 20px;
-  color: white;
-  margin-bottom: -7px;
+  padding: 20px 20px;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: #a8a8a815;
+  backdrop-filter: blur(2px);
 }
-.loopBtn {
-  padding-right: 40px;
+.player__artist {
+  font-weight: 300;
 }
-.muteBtn {
-  padding-left: 40px;
-}
-#playbtn {
-  padding: 0px 10px;
-}
-#time-param {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.player__bg {
+  background-position: bottom center;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
   width: 100%;
 }
-.SeekBar {
+.player__bg:before,
+.player__bg:after {
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
   width: 100%;
 }
-.main-Seek {
-  width: 80%;
+.player__bg:after {
+  background: linear-gradient(to top, #000, #fff);
+  opacity: 0.2;
+  mix-blend-mode: soft-light;
 }
-.time {
-  font-size: 12px;
-  color: white;
+.player__controls {
+  background-color: rgba(255, 255, 255, 0.2);
+  bottom: 0;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.3);
+  height: 80px;
+  position: absolute;
+  width: 100%;
+}
+.player__controls:before,
+.player__controls:after {
+  content: "";
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+}
+.player__controls:before {
+  box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.6);
+  mix-blend-mode: soft-light;
+}
+.player__controls-bg {
+  background-position: bottom center;
+  background-size: cover;
+  height: 100%;
+  filter: blur(30px);
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+.player__controls-bg:before {
+  background: linear-gradient(to top, #000, #fff);
+  content: "";
+  display: block;
+  height: 100%;
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+  position: absolute;
+  width: 100%;
+}
+.player__play,
+.player__prev,
+.player__next {
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 60px;
+  bottom: 0;
+  box-shadow: 0 -2px 4px 0 rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: background 0.15s linear;
+}
+.player__play .player__icon,
+.player__prev .player__icon,
+.player__next .player__icon {
+  transition: transform 0.05s linear;
+}
+.player__play:before,
+.player__play:after,
+.player__prev:before,
+.player__prev:after,
+.player__next:before,
+.player__next:after {
+  border-radius: 60px;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.player__play:before,
+.player__prev:before,
+.player__next:before {
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.04)
+  );
+  box-shadow: 0 -1px 1px 0 rgba(255, 255, 255, 0.6);
+  mix-blend-mode: overlay;
+}
+.player__play:after,
+.player__prev:after,
+.player__next:after {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
+  mix-blend-mode: soft-light;
+}
+.player__play:hover,
+.player__prev:hover,
+.player__next:hover {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(12, 11, 23, 0.4) 0%,
+    rgba(86, 76, 132, 0.1) 60%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+}
+.player__play:hover .player__icon,
+.player__prev:hover .player__icon,
+.player__next:hover .player__icon {
+  transform: scale(0.9);
+}
+.player__play {
+  height: 60px;
+  width: 60px;
+}
+.player__prev,
+.player__next {
+  height: 40px;
+  width: 40px;
+}
+.player__prev {
+  right: 120px;
+}
+.player__next {
+  left: 120px;
+}
+.player__icon {
+  bottom: 0;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  height: 1em;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1.4em;
+}
+.player__icon:before {
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+.player__icon-play {
+  font-size: 30px;
+  width: 1.2em;
+}
+.player__icon-prev,
+.player__icon-next {
+  width: 1.4em;
+}
+.player__repeat {
+  left: 0.5em;
+  width: 1.4em;
+}
+.player__shuffle {
+  right: 0.5em;
+  width: 2em;
+}
+.player__repeat,
+.player__shuffle {
+  bottom: 0;
+  color: #1a0c1d;
+  height: 1.2em;
+  font-size: 30px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+}
+.player__list {
+  height: 1.2em;
+  font-size: 20px;
+  left: 20px;
+  position: absolute;
+  top: 30px;
+  width: 1.4em;
+  z-index: 1;
+}
+.player__volume {
+  height: 1.2em;
+  font-size: 26px;
+  right: 20px;
+  position: absolute;
+  top: 30px;
+  width: 1.4em;
+  z-index: 1;
 }
 </style>

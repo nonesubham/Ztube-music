@@ -24,4 +24,12 @@ Start the server
 ```bash
   npm run dev
 ```
+
+## Screenshots
+![Alt text](https://raw.githubusercontent.com/nonesubham/Ztube-music/main/capture.png)
+
+## Credit
+### For Player
+[@Muhammed](https://github.com/muhammed/mini-player)
+
 #### Note: This app is under development so, crashes and lag possible to face.
