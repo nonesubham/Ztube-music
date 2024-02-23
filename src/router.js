@@ -2,13 +2,13 @@ import { createWebHistory, createRouter } from "vue-router";
 import home from './components/HelloWorld.vue';
 
 import right_sidebar from './components/right_sidebar.vue';
-
+import main_home from './components/main_home.vue';
 
 const routes=[
     {
         name:'Home',
         path:'/',
-        component:home
+        component:main_home
     },{
         name:'About',
         path:'/about',

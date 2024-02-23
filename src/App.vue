@@ -8,11 +8,7 @@ import right_sidebar from './components/right_sidebar.vue'
   <div id="main-area">
     <div class="item-1">
       <div class="sec-1-item-1">
-      <router-link to="/">  <img src="@/assets/logo.png" alt="" style="width: 95%; padding-bottom: 25px" /></router-link>
-        <div id="search-container">
-          <i-iconamoon-search-fill id="search-icon" />
-          <input type="text" name="search" id="search" placeholder="Search" />
-        </div>
+      <router-link to="/">  <img src="@/assets/logo.png" alt="" style="width: 95%; padding-bottom: 50px" /></router-link>
       </div>
       <div class="sec-1-item-2">
         <nav>
@@ -25,7 +21,7 @@ import right_sidebar from './components/right_sidebar.vue'
       <router-link to="/" class="menu-link" active-class="active-menu"><li><i-iconamoon-music-artist-fill />&nbsp;&nbsp;&nbsp;Artists</li></router-link>
           </ul>
 
-          <ul class="nav nav-2" style="padding-top: 20px;">
+          <ul class="nav nav-2" style="padding-top: 25px;">
             <span class="m-header">Library</span>
             <router-link to="/" class="menu-link" active-class="active-menu">
               <li><i-mingcute-album-fill />&nbsp;&nbsp;&nbsp;Albums</li>
@@ -41,7 +37,7 @@ import right_sidebar from './components/right_sidebar.vue'
             </router-link>
           </ul>
 
-          <ul class="nav nav-3" style="padding-top: 20px;">
+          <ul class="nav nav-3" style="padding-top: 25px;">
             <span class="m-header">Other</span>
             <router-link to="/" class="menu-link" active-class="active-menu">
               <li><i-lets-icons-setting-alt-fill />&nbsp;&nbsp;&nbsp;Setting</li>
@@ -55,7 +51,8 @@ import right_sidebar from './components/right_sidebar.vue'
     </div>
 
     <div class="item-2">
-   
+
+
     <router-view></router-view>
     </div>
     <div class="item-3">
@@ -104,44 +101,15 @@ import right_sidebar from './components/right_sidebar.vue'
   justify-content: center;
   align-items: center;
   text-align: center;
+ 
 }
 .sec-1-item-2 {
   padding-top: 20px;
   text-align: left !important;
 }
-#search-container {
-  position: relative;
-}
-
-#search-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #455a5a;
-}
-
-#search {
-  padding: 10px 30px 10px 40px;
-  border-radius: 60px;
-  background: none;
-  border: 1px solid #455a5a;
-  width: 100%;
-  color: white;
-  font-size: 14px;
-}
-
-#search:focus {
-  outline: none;
-}
-
-#search::placeholder {
-  padding-left: 10px;
-  font-size: 14px;
-}
 .m-header {
   color: #e8e8e8;
-  font-size: 18px;
+  font-size: 25px;
 }
 .menu-link {
   color: #9b9b9b;
@@ -151,7 +119,8 @@ import right_sidebar from './components/right_sidebar.vue'
 li{
   display: flex;
   justify-content: flex-start;
-  padding-top: 12px;
+  padding-top: 20px;
+  font-size: 18px;
 }
 .active-menu{
   color: white;
