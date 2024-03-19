@@ -8,7 +8,7 @@ import right_sidebar from './components/right_sidebar.vue'
   <div id="main-area">
     <div class="item-1">
       <div class="sec-1-item-1">
-      <router-link to="/">  <img src="@/assets/logo.png" alt="" style="width: 95%; padding-bottom: 50px" /></router-link>
+      <router-link to="/">  <img src="@/assets/logo.png" alt="" style="width: 95%;" /></router-link>
       </div>
       <div class="sec-1-item-2">
         <nav>
@@ -78,7 +78,7 @@ import right_sidebar from './components/right_sidebar.vue'
   width: 300px;
   height: 100vh;
   padding: 0px 50px;
-  border-right: 1px solid #404141;
+  border-right: 2px solid #404141;
   justify-content: center;
 }
 
@@ -93,6 +93,7 @@ import right_sidebar from './components/right_sidebar.vue'
   justify-content: center;
   align-items: center;
   padding: 0px 50px 0px 20px;
+  padding-bottom: 20px;
 }
 
 .sec-1-item-1 {
@@ -104,31 +105,32 @@ import right_sidebar from './components/right_sidebar.vue'
  
 }
 .sec-1-item-2 {
-  padding-top: 20px;
   text-align: left !important;
+  margin-top:40px;
+  margin-bottom: 30px;
 }
 .m-header {
   color: #e8e8e8;
-  font-size: 25px;
+  font-size: 22px;
 }
 .menu-link {
-  color: #9b9b9b;
+  color: white;
   text-decoration: none;
   
 }
 li{
   display: flex;
   justify-content: flex-start;
-  padding-top: 20px;
-  font-size: 18px;
+  padding-top: 15px;
+  font-size: 15px;
 }
 .active-menu{
-  color: white;
+  color: #9b9b9b;
   font-weight: 500;
   text-decoration: none;
 }
 li:hover{
-  color: white;
+  color: #9b9b9d;
   font-weight: 500;
 }
 

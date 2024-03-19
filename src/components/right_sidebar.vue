@@ -51,10 +51,10 @@
       </div>
     </div>
     <div class="queue_list">
-      <p style="text-align: center; font-size: 20px; font-weight: 800;">Up Next</p>
+      <p style="text-align: center; font-size: 18px; padding-bottom:10px; font-weight: 800;">Up Next</p>
       <div class="main_lst">
       <div class="queue_card">
-        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" width="50px">
+        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" >
         <div class="related_text">
           <p class="r_name">Song Name</p>
           <p class="r_author">Author</p>
@@ -62,7 +62,7 @@
 
       </div>
       <div class="queue_card">
-        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" width="50px">
+        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" >
         <div class="related_text">
           <p class="r_name">Song Name</p>
           <p class="r_author">Author</p>
@@ -70,7 +70,7 @@
 
       </div>
       <div class="queue_card">
-        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" width="50px">
+        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" >
         <div class="related_text">
           <p class="r_name">Song Name</p>
           <p class="r_author">Author</p>
@@ -78,7 +78,7 @@
 
       </div>
       <div class="queue_card">
-        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" width="50px">
+        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" >
         <div class="related_text">
           <p class="r_name">Song Name</p>
           <p class="r_author">Author</p>
@@ -86,7 +86,23 @@
 
       </div>
       <div class="queue_card">
-        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" width="50px">
+        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" >
+        <div class="related_text">
+          <p class="r_name">Song Name</p>
+          <p class="r_author">Author</p>
+        </div>
+
+      </div>
+      <div class="queue_card">
+        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" >
+        <div class="related_text">
+          <p class="r_name">Song Name</p>
+          <p class="r_author">Author</p>
+        </div>
+
+      </div>
+      <div class="queue_card">
+        <img class="min_thumb" src="https://inv.in.projectsegfau.lt/vi/5Z9oa3gMX5s/1.jpg" >
         <div class="related_text">
           <p class="r_name">Song Name</p>
           <p class="r_author">Author</p>
@@ -223,52 +239,62 @@ onUnmounted(() => {
 
 .queue_card {
   overflow: hidden;
-  padding-top: 15px;
+  padding-top: 5px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+.queue_card:hover{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.queue_card_selected{
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .main_lst{
   overflow-y: scroll;
   overflow-x:hidden;
-  height: 300px;
+  height: 190px;
 }
 .related_text {
   flex-grow: 0.9;
 }
-
+::-webkit-scrollbar{
+  width: 5px;
+}
 .r_name {
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .r_author {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .queue_list {
 
   margin-top: 20px;
-  background-color: rgba(255, 255, 255, 0.192);
+  background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   border-radius: 30px;
   padding: 10px;
+  color:white;
   
 }
 
 .min_thumb {
   border-radius: 10px;
+  width: 50px;
 }
 
 .player {
   box-shadow: 0 2px 4px -4px rgba(0, 0, 0, 0.4), 0 50px 45px -20px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
-  height: 350px;
+  height: 250px;
   overflow: hidden;
   position: relative;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .player__meta {

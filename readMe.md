@@ -20,7 +20,7 @@ Here're some of the Ztube music's best features:
 *   No Trackers
 *   Support Gmail Login
 *   Support Background Play (iOS & Android \[Soon\])
-*   Choose Geo Reason
+*   Choose Geo Region
 *   Access Restricted Content
 
 <h2>🛠️ Installation Steps:</h2>
