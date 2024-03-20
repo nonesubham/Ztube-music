@@ -12,7 +12,7 @@ const routes=[
     },{
         name:'About',
         path:'/about',
-        component:right_sidebar
+        component:home
     }
 
 ]
