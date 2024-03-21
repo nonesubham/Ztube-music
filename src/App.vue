@@ -2,6 +2,7 @@
 // #22C1C3 theme color
 // #455a5a secondary color of font
 import right_sidebar from './components/right_sidebar.vue'
+import search_bar from './components/search_bar.vue'
 </script>
 
 <template>
@@ -51,7 +52,7 @@ import right_sidebar from './components/right_sidebar.vue'
     </div>
 
     <div class="item-2">
-
+<search_bar />
 
     <router-view></router-view>
     </div>
@@ -83,6 +84,7 @@ import right_sidebar from './components/right_sidebar.vue'
 }
 
 .item-2 {
+  padding-left: 15px;
   width: 60%;
   justify-content: center;
   align-items: center;

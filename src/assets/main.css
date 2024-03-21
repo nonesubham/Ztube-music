@@ -4,11 +4,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
+ 
 }
 body{
     background-color: #1a1a1a;
-
+    overflow: hidden;
 }
 #bottom_shape{
   bottom: -240px;
