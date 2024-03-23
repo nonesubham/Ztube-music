@@ -1,13 +1,14 @@
 <template>
   <swiper
     :slides-per-view="1"
-    :space-between="50"
+    :space-between="0"
     @swiper="onSwiper"
     @slideChange="onSlideChange"
+    
   >
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
+    <swiper-slide><img src="https://i.ytimg.com/vi/_gHCz9-V7Bk/hq720.jpg" width='800'></swiper-slide>
+    <swiper-slide><img src="https://i.ytimg.com/vi/G1FSocmKCyQ/hq720.jpg" width='800'></swiper-slide>
+    <swiper-slide><img src="https://i.ytimg.com/vi/s_SXkcjvekc/hq720.jpg" width='800'></swiper-slide>
     <!-- Add more swiper slides here -->
   </swiper>
 </template>
